@@ -35,6 +35,11 @@
       media="screen"
     />
 
+    {{-- CDN Datatable --}}
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.3.2/css/fixedHeader.bootstrap5.min.css">
     <!-- CDN Fontawesome -->
     <script
       src="https://kit.fontawesome.com/32f82e1dca.js"
@@ -68,26 +73,26 @@
       </div>
       <div class="pt-2 d-flex flex-column gap-5">
         <div class="menu p-0">
-          <p>Daily Use</p>
+            <p>Data Posyandu</p>
           <a href="#" class="item-menu active">
             <i class="icon ic-stats"></i>
-            Overview
+            Kader
           </a>
-          <a href="#" class="item-menu">
-            <i class="icon ic-trans"></i>
-            Transactions
-          </a>
-          <a href="#" class="item-menu">
-            <i class="icon ic-msg"></i>
-            Messages
-          </a>
-          <a href="#" class="item-menu">
-            <i class="icon ic-stats"></i>
-            Stats
+          <a href="{{ route('dataAnak') }}" class="item-menu">
+            <i class="icon ic-account"></i>
+              Data Anak
           </a>
           <a href="#" class="item-menu">
             <i class="icon ic-account"></i>
-            Account
+              Data Wali
+          </a>
+          <a href="#" class="item-menu">
+            <i class="icon ic-trans"></i>
+            Data Suplemen
+          </a>
+          <a href="#" class="item-menu">
+            <i class="icon ic-trans"></i>
+            Data fisik
           </a>
         </div>
         <div class="menu">
@@ -178,6 +183,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     <script src="{{ asset('assets/js/donut_chart.js') }}"></script>
     <script src="{{ asset('assets/js/line_chart.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.3.2/js/dataTables.fixedHeader.min.js"></script>
 
     <script>
       $(document).ready(function () {
