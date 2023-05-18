@@ -10,10 +10,42 @@ body {
   background: #f8f9fd;
 }
 
+.button_create {
+  padding: 10px 20px 10px 20px;
+  margin: 30px 20px 30px 0;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #3547ac;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button_create:hover {
+  background-color: #0062cc;
+  color: #ffffff;
+}
+
+/* .button_create{
+    border-radius: 10px;
+    margin: 30px 20px 20px 0;
+    background-color: #3547ac;
+
+    padding:8px;
+    padding-right: 0;
+}
+
+.button_create a{
+    text-decoration: none;
+    color: white;
+} */
 
 .card{
     box-shadow: 9px 5px 56px 0px rgba(53,71,172,0.41);
     border-radius: 30px;
+    border: 0;
 }
 
 .title_data{
@@ -33,6 +65,25 @@ body {
 .title_data img{
     width: 40px;
     height: auto;
+}
+
+
+.card .header_logo{
+    width: 40vh;
+    height: auto;
+    margin: 20px 0 8px 48px;
+}
+
+.button-submit{
+    background-color: #3547ac;
+    border: 0;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+}
+
+.button-submit:hover{
+    background-color:#0062cc ;
 }
 
 @media (max-width: 1024px) {

@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" type="text/css" media="screen" />
 
     {{-- CDN Datatable --}}
+    <link rel="stylesheet" href="cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
@@ -110,19 +111,12 @@
             <i class="fa-solid fa-bars"></i>
           </button>
         </div>
-        <div class="d-flex align-items-center justify-content-end gap-4">
-          <div class="row">
-            <input type="text" placeholder="Search report or product" class="search form-control" />
-            <button class="btn btn-search d-flex justify-content-center align-items-center p-0" type="button">
-              <img src="assets/images/ic_search.svg" width="20px" height="20px" />
-            </button>
-          </div>
 
           <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <img src="assets/images/avatar.jpg" 
-            alt="Photo Profile" class="avatar" 
-                :href="route('logout')" onclick="event.preventDefault();
+            <img src="assets/images/avatar.jpg"
+            alt="Photo Profile" class="avatar"
+            :href="route('logout')" onclick="event.preventDefault();
                 this.closest('form').submit();"
             />
           </form>
@@ -134,11 +128,6 @@
     @yield('content')
   </main>
 
-  <script>
-    $(document).ready(function() {
-      $('#dataTable').DataTable();
-    });
-  </script>
 
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -153,6 +142,11 @@
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/fixedheader/3.3.2/js/dataTables.fixedHeader.min.js"></script>
 
+  <script>
+    $(document).ready(function() {
+      $('#dataTable').DataTable();
+    });
+  </script>
   <script>
     $(document).ready(function() {
       $('.sidebarCollapseDefault').on('click', function() {

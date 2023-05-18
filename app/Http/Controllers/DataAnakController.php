@@ -12,4 +12,8 @@ class DataAnakController extends Controller
 
         return view('anak.index');
     }
+
+    public function create(){
+        return view('anak.create');
+    }
 }

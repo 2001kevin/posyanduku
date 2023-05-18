@@ -25,3 +25,4 @@ Route::get('/', function () {
 require __DIR__.'/auth.php';
 
 Route::get('dataAnak', [DataAnakController::class, 'index'])->name('dataAnak');
+Route::get('createAnak', [DataAnakController::class, 'create'])->name('createAnak');
