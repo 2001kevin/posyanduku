@@ -42,10 +42,18 @@ body {
     color: white;
 } */
 
-.card{
+.data_anak .card{
     box-shadow: 9px 5px 56px 0px rgba(53,71,172,0.41);
     border-radius: 30px;
     border: 0;
+    background-color: white;
+}
+
+.form_anak .card{
+    box-shadow: 9px 5px 56px 0px rgba(53,71,172,0.41);
+    border-radius: 30px;
+    border: 0;
+    background-color: white;
 }
 
 .title_data{
@@ -85,6 +93,43 @@ body {
 .button-submit:hover{
     background-color:#0062cc ;
 }
+
+.button-create{
+  padding: 20px 100px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  background-color: #4640DE;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.button-create:hover{
+  color: white;
+  background-color: #2c288f;
+
+}
+
+.button-edit{
+  padding: 5px 9px;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  background-color: #4640DE;
+}
+
+.button-delete{
+  padding: 5px 12px;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  background-color: red;
+}
+
+.button-delete:hover{
+  background-color: rgb(195, 5, 5);
+}
+
 
 @media (max-width: 1024px) {
   .information .card {

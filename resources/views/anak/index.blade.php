@@ -20,6 +20,7 @@
                         <th>Age</th>
                         <th>Start date</th>
                         <th>Salary</th>
+                        <th >Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,6 +31,10 @@
                         <td>61</td>
                         <td>2011-04-25</td>
                         <td>$320,800</td>
+                        <td>
+                    <button class="button-edit" data-bs-toggle="modal" data-bs-target="#"><i class="fas fa-pencil-alt"></i></button>
+                    <button class="button-delete"><i class="fas fa-times" data-bs-toggle="modal" data-bs-target="#"></i></button>
+                  </td>
                     </tr>
                 </tbody>
             </table>
