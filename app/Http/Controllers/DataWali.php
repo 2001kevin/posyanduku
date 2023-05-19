@@ -41,5 +41,7 @@ class DataWali extends Controller
     public function delete(Type $var = null)
     {
         # code...
+
     }
+
 }

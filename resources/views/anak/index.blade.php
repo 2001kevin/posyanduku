@@ -2,13 +2,16 @@
 
 @section('content')
 <section class="data_anak">
-    <div class="card d-flex align-item-center mt-5" style="width:100%">
-        <div class="title_data ">
-            <img src="{{asset('assets/images/LOGO.svg')}}" alt="">
-            <h2 class="fw-bold">Data Anak</h2>
+    <div class="card d-flex align-item-center mt-5" style="width:99%">
+        <div class="d-flex justify-content-between">
+            <div class="title_data d-flex justify-content-between">
+                <img src="{{asset('assets/images/LOGO.svg')}}" alt="">
+                <h2 class="fw-bold">Data Anak</h2>
+            </div>
+            <a href="{{ route('createAnak') }}" class="button_create">Create</a>
         </div>
         <div class="card-body">
-            <table id="dataTable" class="table table-striped" style="width:100%">
+            <table id="dataTable" class="table" style="width:100%">
                 <thead>
                     <tr>
                         <th>Nama Anak</th>

@@ -47,4 +47,8 @@ class DataAnakController extends Controller
     {
         # code...
     }
+
+    public function create(){
+        return view('anak.create');
+    }
 }
