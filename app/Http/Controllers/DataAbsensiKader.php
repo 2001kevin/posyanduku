@@ -4,16 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DataFisik extends Controller
+class DataAbsensiKader extends Controller
 {
     public function index(){
-        $anaks = ModelsDataAnak::all();
+        $walis = ModelsDataWali::all();
 
-        // $cek_data_suplemen = dataSuplement::where('id_anak', 'id')->count();
-
-        // $data_fisik =
-
-        return view('anak.index', compact('anaks'));
+        return view('wali.index', compact('walis'));
     }
 
     public function create(Type $var = null)

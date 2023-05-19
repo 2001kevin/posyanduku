@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="data_anak">
-    <div class="card d-flex align-item-center mt-5" style="width:80%">
+    <div class="card d-flex align-item-center mt-5" style="width:100%">
         <div class="title_data ">
             <img src="{{asset('assets/images/LOGO.svg')}}" alt="">
             <h2 class="fw-bold">Data Anak</h2>
@@ -11,24 +11,50 @@
             <table id="dataTable" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>Nama Anak</th>
+                        <th>Nama Wali</th>
+                        <th>Gender Anak</th>
+                        <th>Umur</th>
+                        <th>Jml Pemeriksaan</th>
+                        <th>Jml Suplemen diberikan</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($anaks as $anak)
                     <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011-04-25</td>
-                        <td>$320,800</td>
+                        <td>{{ $anak->nama_anak }}</td>
+                        <td>{{ $anak->dataWalis->nama_wali }}</td>
+                        <td>{{ $anak->jenis_kelamin }}</td>
+                        <td>{{ $anak->umur }}</td>
+
+                        @if($anak->dataFisiks)
+                        <td>{{ $anak->dataFisiks->where('id_anak', $anak->id)->count() }}</td>
+                        @else
+                        <td>0</td>
+                        @endif
+
+                        @if($anak->dataSuplements)
+                        <td>{{ $anak->dataSuplements->where('id_anak', $anak->id)->count() }}</td>
+                        @else
+                        <td>0</td>
+                        @endif
+
+                        <td>
+                            <a class="btn btn-primary" href="{{ route('detailAnak') }}">
+                                <i class="fa-lg fa-sharp fa-solid fa-eye"></i>
+                            </a>
+                            <a class="btn btn-warning" href="{{ route('editAnak') }}">
+                                <i class="fa-lg fa-solid fa-pen-to-square"></i>
+                            </a>
+
+                            <a href="{{ route('deleteAnak') }}" class="btn btn-danger" type="button">
+                                <i class="fa-lg fa-solid fa-trash"></i>
+                            </a>
+                        </td>
                     </tr>
-                </tbody>    
+                    @endforeach
+                </tbody>
             </table>
         </div>
     </div>

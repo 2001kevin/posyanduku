@@ -10,8 +10,9 @@ class dataWali extends Model
     use HasFactory;
 
     protected $table='walis';
+    protected $fillable = ['nama_wali', 'alamat', 'no_telp'];
 
     public function dataAnaks(){
-        return $this->hasMany(dataAnak::class);
+        return $this->belongsTo(dataAnak::class, 'id', 'id_wali');
     }
 }

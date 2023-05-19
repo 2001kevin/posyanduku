@@ -42,11 +42,11 @@ header p {
 }
 
 .btn-search {
-  right: 160px;
+  /* right: 160px; */
   width: 40px;
   height: 40px;
   color: #000000;
-  position: absolute;
+  position: relative;
   border-radius: 50px;
   background-color: #dce2f4;
 }
@@ -155,4 +155,14 @@ header p {
 .transaction .income {
   font-weight: 500;
   color: #3547ac;
+}
+
+.bg-icon {
+  background-image: url('../../assets/images/bg_icon.png');
+  color: #fff;
+  display: flex;
+  background-size: cover;
+  background-color: #3547ac;
+  justify-content: space-between;
+  box-shadow: rgba(53, 71, 172, 0.5) 0px 20px 50px 0px;
 }

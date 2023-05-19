@@ -10,16 +10,17 @@ class dataAnak extends Model
     use HasFactory;
 
     protected $table='anaks';
+    protected $fillable = ['nama_anak', 'jenis_kelamin', 'umur', 'id_wali'];
 
     public function dataFisiks(){
-        return $this->hasMany(dataFisik::class);
+        return $this->belongsTo(dataFisik::class, 'id', 'id_anak');
     }
 
     public function dataSuplements(){
-        return $this->hasMany(dataSuplement::class);
+        return $this->belongsTo(dataSuplement::class, 'id', 'id_anak');
     }
 
     public function dataWalis(){
-        return $this->belongsTo(dataWali::class);
+        return $this->belongsTo(dataWali::class, 'id_wali', 'id');
     }
 }
