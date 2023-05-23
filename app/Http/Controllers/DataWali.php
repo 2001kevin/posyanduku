@@ -28,20 +28,39 @@ class DataWali extends Controller
         return view('dashboard');
     }
 
-    public function edit(Type $var = null)
+    public function edit($id)
     {
-        return view('dashboard');
+        $walis = ModelsDataWali::find($id);
+
+        return view('wali.edit', compact('walis'));
     }
 
-    public function update(Type $var = null)
-    {
-        # code...
+    public function update(Request $request, $id)
+    {   
+        $update_wali = $request->validate([
+            'nama_wali' => 'required|string|max:100',
+            'alamat' => 'required|string|max:255',
+            'no_telp' => 'required|string|max:13',            
+        ]);
+        
+        $data_wali = ModelsDataWali::find($id);
+        $data_wali->nama_wali = $request->nama_wali;
+        $data_wali->alamat = $request->alamat;
+        $data_wali->no_telp = $request->no_telp;
+        $data_wali->save();
+
+        return redirect()->route('dataWali')->with('toast_success' ,'Data berhasil diperbarui!');
+        
     }
 
-    public function delete(Type $var = null)
+    public function delete($id)
     {
-        # code...
+        $walis = ModelsDataWali::find($id);
+        $walis->delete();
 
+        // Alert::success('Delete!', "Data berhasil dihapus!");
+        return redirect()->route('dataWali')->with('toast_success' ,'Data berhasil dihapus!');
+        // return redirect()->route('dataWali')->withSuccessMessage('Data berhasil dihapus!');
     }
 
 }

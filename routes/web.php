@@ -3,7 +3,9 @@
 use App\Http\Controllers\DataAbsensiKader;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataAnakController;
+use App\Http\Controllers\DataFisik;
 use App\Http\Controllers\DataKader;
+use App\Http\Controllers\DataSuplement;
 use App\Http\Controllers\DataWali;
 use Illuminate\Routing\RouteGroup;
 
@@ -34,9 +36,9 @@ Route::controller(DataAnakController::class)->group(function () {
     Route::get('storeAnak', 'store')->name('storeAnak');
     Route::get('detailAnak', 'detail')->name('detailAnak');
 
-    Route::get('editAnak', 'edit')->name('editAnak');
-    Route::get('updateAnak', 'update')->name('updateAnak');
-    Route::get('deleteAnak', 'delete')->name('deleteAnak');
+    Route::get('editAnak/{id}', 'edit')->name('editAnak');
+    Route::post('updateAnak/{id}', 'update')->name('updateAnak');
+    Route::post('deleteAnak/{id}', 'delete')->name('deleteAnak');
 });
 
 Route::controller(DataKader::class)->group(function () {
@@ -45,9 +47,9 @@ Route::controller(DataKader::class)->group(function () {
     Route::get('storeKader', 'store')->name('storeKader');
     Route::get('detailKader', 'detail')->name('detailKader');
 
-    Route::get('editKader', 'edit')->name('editKader');
-    Route::get('updateKader', 'update')->name('updateKader');
-    Route::get('deleteKader', 'delete')->name('deleteKader');
+    Route::get('editKader/{id}', 'edit')->name('editKader');
+    Route::post('updateKader/{id}', 'update')->name('updateKader');
+    Route::post('deleteKader/{id}', 'delete')->name('deleteKader');
 });
 
 Route::controller(DataWali::class)->group(function () {
@@ -56,9 +58,9 @@ Route::controller(DataWali::class)->group(function () {
     Route::get('storeWali', 'store')->name('storeWali');
     Route::get('detailWali', 'detail')->name('detailWali');
 
-    Route::get('editWali', 'edit')->name('editWali');
-    Route::get('updateWali', 'update')->name('updateWali');
-    Route::get('deleteWali', 'delete')->name('deleteWali');
+    Route::get('editWali/{id}', 'edit')->name('editWali');
+    Route::post('updateWali/{id}', 'update')->name('updateWali');
+    Route::post('deleteWali/{id}', 'delete')->name('deleteWali');
 });
 
 Route::controller(DataAbsensiKader::class)->group(function () {
@@ -67,7 +69,29 @@ Route::controller(DataAbsensiKader::class)->group(function () {
     Route::get('storeAbsensiKader', 'store')->name('storeAbsensiKader');
     Route::get('detailAbsensiKader', 'detail')->name('detailAbsensiKader');
 
-    Route::get('editAbsensiKader', 'edit')->name('editAbsensiKader');
-    Route::get('updateAbsensiKader', 'update')->name('updateAbsensiKader');
-    Route::get('deleteAbsensiKader', 'delete')->name('deleteAbsensiKader');
+    Route::get('editAbsensiKader/{id}', 'edit')->name('editAbsensiKader');
+    Route::post('updateAbsensiKader/{id}', 'update')->name('updateAbsensiKader');
+    Route::post('deleteAbsensiKader/{id}', 'delete')->name('deleteAbsensiKader');
+});
+
+Route::controller(DataSuplement::class)->group(function () {
+    Route::get('dataSuplement', 'index')->name('dataSuplement');
+    Route::get('createSuplement', 'create')->name('createSuplement');
+    Route::get('storeSuplement', 'store')->name('storeSuplement');
+    Route::get('detailSuplement', 'detail')->name('detailSuplement');
+
+    Route::get('editSuplement/{id}', 'edit')->name('editSuplement');
+    Route::post('updateSuplement/{id}', 'update')->name('updateSuplement');
+    Route::post('deleteSuplement/{id}', 'delete')->name('deleteSuplement');
+});
+
+Route::controller(DataFisik::class)->group(function () {
+    Route::get('dataFisik', 'index')->name('dataFisik');
+    Route::get('createFisik', 'create')->name('createFisik');
+    Route::get('storeFisik', 'store')->name('storeFisik');
+    Route::get('detailFisik', 'detail')->name('detailFisik');
+
+    Route::get('editFisik/{id}', 'edit')->name('editFisik');
+    Route::post('updateFisik/{id}', 'update')->name('updateFisik');
+    Route::post('deleteFisik/{id}', 'delete')->name('deleteFisik');
 });

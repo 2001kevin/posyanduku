@@ -25,8 +25,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.3.2/css/fixedHeader.bootstrap5.min.css">
+  
   <!-- CDN Fontawesome -->
   <script src="https://kit.fontawesome.com/32f82e1dca.js" crossorigin="anonymous"></script>
+  <!-- CDN SweetAlert -->
 </head>
 
 <body>
@@ -59,13 +61,13 @@
           <i class="icon ic-account"></i>
           Data Wali
         </a>
-        <a href="#" class="item-menu">
+        <a href="{{ route('dataSuplement') }}" class="item-menu">
           <i class="icon ic-trans"></i>
           Data Suplemen
         </a>
-        <a href="#" class="item-menu">
+        <a href="{{ route('dataFisik') }}" class="item-menu">
           <i class="icon ic-trans"></i>
-          Data fisik
+          Data Fisik
         </a>
       </div>
       <div class="menu">
@@ -130,7 +132,6 @@
     @yield('content')
   </main>
 
-
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
@@ -157,6 +158,9 @@
       });
     });
   </script>
+  @include('sweetalert::alert')
+
+  @yield('js')
 </body>
 
 </html>

@@ -28,8 +28,10 @@
                         <td>{{ $absensiKader->no_telp }}</td>                        
                         <td>##</td>
 
-                        <td>
-                            <a class="btn btn-primary" href="{{ route('detailAbsensiKader') }}">
+                        <form action="{{ route('deleteAnak', $anak->id) }}" method="post" >
+                        @csrf                        
+                            <td>
+                                <a class="btn btn-primary" href="{{ route('detailAbsensiKader') }}">
                                 <i class="fa-lg fa-sharp fa-solid fa-eye"></i>
                             </a>
                             <a class="btn btn-warning" href="{{ route('editAbsensiKader') }}">
@@ -37,8 +39,11 @@
                             </a>
 
                             <a href="{{ route('deleteAbsensiKader') }}" class="btn btn-danger" type="button">
-                                <i class="fa-lg fa-solid fa-trash"></i>
-                            </a>
+                                <button class="btn btn-danger" type="submit" onclick="return confirm('Yakin ingin menghapus?')">
+                                    <i class="fa-lg fa-solid fa-trash"></i>
+                                </button>
+                            </td>
+                        </form>
                         </td>
                     </tr>
                     @endforeach

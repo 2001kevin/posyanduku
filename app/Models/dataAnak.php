@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\dataWali;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class dataAnak extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $table='anaks';
     protected $fillable = ['nama_anak', 'jenis_kelamin', 'umur', 'id_wali'];

@@ -15,7 +15,8 @@
                         <th>Jenis Kelamin</th>
                         <th>Alamat</th>
                         <th>No Telp</th>
-                        <th>Kehadiran Kader</th>
+                        <th>Status</th>
+                        <!-- <th>Kehadiran Kader</th> -->
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -26,20 +27,23 @@
                         <td>{{ $kader->jenis_kelamin }}</td>
                         <td>{{ $kader->alamat }}</td>
                         <td>{{ $kader->no_telp }}</td>                        
-                        <td>##</td>
+                        <td>{{ $kader->status }}</td>                        
+                        <!-- <td>##</td> -->
 
-                        <td>
-                            <a class="btn btn-primary" href="{{ route('detailKader') }}">
-                                <i class="fa-lg fa-sharp fa-solid fa-eye"></i>
-                            </a>
-                            <a class="btn btn-warning" href="{{ route('editKader') }}">
-                                <i class="fa-lg fa-solid fa-pen-to-square"></i>
-                            </a>
-
-                            <a href="{{ route('deleteKader') }}" class="btn btn-danger" type="button">
-                                <i class="fa-lg fa-solid fa-trash"></i>
-                            </a>
-                        </td>
+                        <form action="{{ route('deleteKader', $kader->id) }}" method="post" >
+                        @csrf                        
+                            <td>
+                                <a class="btn btn-primary" href="{{ route('detailKader') }}">
+                                    <i class="fa-lg fa-sharp fa-solid fa-eye"></i>
+                                </a>
+                                <a class="btn btn-warning" href="{{ route('editKader', $kader->id) }}">
+                                    <i class="fa-lg fa-solid fa-pen-to-square"></i>
+                                </a>
+                                <button class="btn btn-danger" type="submit" onclick="return confirm('Yakin ingin menghapus?')">
+                                    <i class="fa-lg fa-solid fa-trash"></i>
+                                </button>
+                            </td>
+                        </form>
                     </tr>
                     @endforeach
                 </tbody>

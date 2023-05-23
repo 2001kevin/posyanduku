@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class DataKader extends Controller
 {
     public function index(){
-        $kaders = ModelsDataKader::all();
+        $kaders = ModelsDataKader::where('status', '!=', 'berhenti menjabat')->get();
         $kehadirans = dataFisik::all();
         
         return view('kader.index', compact('kaders', 'kehadirans'));
@@ -30,18 +30,43 @@ class DataKader extends Controller
         return view('dashboard');
     }
 
-    public function edit(Type $var = null)
+    public function edit($id)
     {
-        return view('dashboard');
+        $kaders = ModelsDataKader::find($id);
+
+        return view('kader.edit', compact('kaders'));
     }
 
-    public function update(Type $var = null)
-    {
-        # code...
+    public function update(Request $request, $id)
+    {   
+        $request->validate([
+            'nama_kader' => 'required|string|max:100',
+            'jenis_kelamin' => 'required|in:L,P',
+            'alamat' => 'required|string|max:255',
+            'no_telp' => 'required|string|max:13',            
+            'status' => 'required|string|max:20',
+        ]);
+        
+        $data_kader = ModelsDataKader::find($id);
+        $data_kader->nama_kader = $request->nama_kader;
+        $data_kader->jenis_kelamin = $request->jenis_kelamin;
+        $data_kader->alamat = $request->alamat;
+        $data_kader->no_telp = $request->no_telp;
+        $data_kader->status = $request->status;
+        $data_kader->save();
+
+        return redirect()->route('dataKader')->with('toast_success' ,'Data berhasil diperbarui!');
+        
     }
 
-    public function delete(Type $var = null)
+     public function delete($id)
     {
-        # code...
+        $kaders = ModelsDataKader::find($id);
+        $kaders->status = 'berhenti menjabat';
+        $kaders->save();
+
+        // Alert::success('Delete!', "Data berhasil dihapus!");
+        return redirect()->route('dataKader')->with('toast_success' ,'Data berhasil dihapus!');
+        // return redirect()->route('dataKader')->withSuccessMessage('Data berhasil dihapus!');
     }
 }

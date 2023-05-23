@@ -12,7 +12,7 @@
                 <thead>
                     <tr>
                         <th>Nama Wali</th>       
-                        <th>Nama Anak</th>                 
+                        <!-- <th>Nama Anak</th>                  -->
                         <th>Alamat</th>
                         <th>No Telp</th>
                         <th>Action</th>
@@ -21,23 +21,36 @@
                 <tbody>
                     @foreach($walis as $wali)
                     <tr>
-                        <td>{{ $wali->nama_wali }}</td>                        
+                        <td>{{ $wali->nama_wali }}</td>         
+
+                        <!-- @if($wali->dataAnaks)               
                         <td>{{ $wali->dataAnaks->nama_anak }}</td>                        
+                        @else
+                        <td>-</td>
+                        @endif -->
+
                         <td>{{ $wali->alamat }}</td>
                         <td>{{ $wali->no_telp }}</td>                        
 
-                        <td>
-                            <a class="btn btn-primary" href="{{ route('detailWali') }}">
-                                <i class="fa-lg fa-sharp fa-solid fa-eye"></i>
-                            </a>
-                            <a class="btn btn-warning" href="{{ route('editWali') }}">
-                                <i class="fa-lg fa-solid fa-pen-to-square"></i>
-                            </a>
-
-                            <a href="{{ route('deleteWali') }}" class="btn btn-danger" type="button">
-                                <i class="fa-lg fa-solid fa-trash"></i>
-                            </a>
-                        </td>
+                        <form action="{{ route('deleteWali', $wali->id) }}" method="post" >
+                        @csrf                        
+                            <td>
+                                <a class="btn btn-primary" href="{{ route('detailWali') }}">
+                                    <i class="fa-lg fa-sharp fa-solid fa-eye"></i>
+                                </a>
+                                <a class="btn btn-warning" href="{{ route('editWali', $wali->id) }}">
+                                    <i class="fa-lg fa-solid fa-pen-to-square"></i>
+                                </a>
+                                <button class="btn btn-danger" type="submit" onclick="return confirm('Yakin ingin menghapus?')">
+                                    <i class="fa-lg fa-solid fa-trash"></i>
+                                </button>
+                                <!-- @if(is_null($wali->dataAnaks))
+                                <button class="btn btn-danger" type="submit" onclick="return confirm('Yakin ingin menghapus?')">
+                                    <i class="fa-lg fa-solid fa-trash"></i>
+                                </button>
+                                @endif -->
+                            </td>
+                        </form>
                     </tr>
                     @endforeach
                 </tbody>

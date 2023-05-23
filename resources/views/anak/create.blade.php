@@ -8,7 +8,7 @@
                       <img class="header_logo" src="{{ asset('assets/images/LOGO_POSYANDU.svg') }}" style="border-top-left-radius: 13px; border-top-right-radius: 15px;" class="card-img-top d-none d-lg-block"  alt="Backgorund Image">
                           <div class="card-body py-5 px-5">
                               <div class="text-center">
-                                      <h1><strong>Data Anak</strong></h1>
+                                      <h1 class="mb-4"><strong>Data Anak</strong></h1>
                                   </div>
 
                                   <form action="#" method="POST" class="row sign-up-form form g-3" enctype="multipart/form-data">
