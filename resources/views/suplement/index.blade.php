@@ -6,9 +6,9 @@
         <div class="d-flex justify-content-between">
             <div class="title_data d-flex justify-content-between">
                 <img src="{{asset('assets/images/LOGO.svg')}}" alt="">
-                <h2 class="fw-bold">Data Fisik</h2>
+                <h2 class="fw-bold">Data Suplement</h2>
             </div>
-            <a href="{{ route('createFisik') }}" class="button_create">Create</a>
+            <a href="{{ route('createSuplement') }}" class="button_create">Create</a>
         </div>
         <div class="card-body">
             <table id="dataTable" class="table" style="width:100%">
@@ -16,35 +16,39 @@
                     <tr>
                         <th>Nama Anak</th>
                         <th>Nama Kader</th>
-                        <th>Berat Badan</th>
-                        <th>Naik Turun BB</th>
-                        <th>Tgl Pemeriksaan</th>
+                        <th>Vitamin A</th>
+                        <th>Obat Cacing</th>
+                        <th>Makanan Tambahan</th>
+                        <th>Bulan Suplemen</th>
+                        <th>Tanggal Pemeriksaan</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($fisiks as $fisik)
+                    @foreach($suplements as $suplement)
                     <tr>
-                        <td>{{ $fisik->dataAnaks->nama_anak }}</td>
-                        <td>{{ $fisik->dataKaders->nama_kader }}</td>
-                        <td>{{ $fisik->berat_badan }} kg</td>
-                        <td>{{ $fisik->naik_turun_bb }}</td>
-                        <td>{{ $fisik->tgl_pemeriksaan }}</td>
+                        <td>{{ $suplement->dataAnaks->nama_anak }}</td>
+                        <td>{{ $suplement->dataKaders->nama_kader }}</td>
+                        <td>{{ $suplement->vitamin_a }}</td>
+                        <td>{{ $suplement->obat_cacing }}</td>
+                        <td>{{ $suplement->makanan_tambahan }}</td>
+                        <td>{{ $suplement->bulan_suplemen }}</td>
+                        <td>{{ $suplement->tgl_pemeriksaan }}</td>
 
-                        <form action="{{ route('deleteFisik', $fisik->id) }}" method="post" >
+                        <form action="{{ route('deleteSuplement', $suplement->id) }}" method="post" >
                         @csrf                        
                             <td>
-                                <a class="btn btn-primary" href="{{ route('detailFisik') }}">
+                                <a class="btn btn-primary" href="{{ route('detailSuplement', $suplement->id) }}">
                                     <i class="fa-lg fa-sharp fa-solid fa-eye"></i>
                                 </a>
-                                <a class="btn btn-warning" href="{{ route('editFisik', $fisik->id) }}">
+                                <a class="btn btn-warning" href="{{ route('editSuplement', $suplement->id) }}">
                                     <i class="fa-lg fa-solid fa-pen-to-square"></i>
                                 </a>
                                 <button class="btn btn-danger" type="submit" onclick="return confirm('Yakin ingin menghapus?')">
                                     <i class="fa-lg fa-solid fa-trash"></i>
                                 </button>
                             </td>
-                        </form>
+                        </form>                        
                     </tr>
                     @endforeach
                 </tbody>

@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="data_anak">
-    <div class="card d-flex align-item-center mt-5 " style="width:99%">
+    <div class="card d-flex align-item-center mt-5" style="width:100%">
         <div class="d-flex justify-content-between">
             <div class="title_data d-flex justify-content-between">
                 <img src="{{asset('assets/images/LOGO.svg')}}" alt="">
@@ -11,28 +11,50 @@
             <a href="{{ route('createWali') }}" class="button_create">Create</a>
         </div>
         <div class="card-body">
-            <table id="dataTable" class="table" style="width:100%">
+            <table id="dataTable" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Nama</th>
-                        <th>No Telepon</th>
+                        <th>Nama Wali</th>       
+                        <!-- <th>Nama Anak</th>                  -->
                         <th>Alamat</th>
-                        <th >Action</th>
+                        <th>No Telp</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($walis as $wali)
-                        <tr>
-                            <th scope="row">{{ $loop->index+1 }}</th>
-                            <td>{{ $wali->nama_wali }}</td>
-                            <td>{{ $wali->no_telp }}</td>
-                            <td>{{ $wali->alamat }}</td>
+                    @foreach($walis as $wali)
+                    <tr>
+                        <td>{{ $wali->nama_wali }}</td>         
+
+                        <!-- @if($wali->dataAnaks)               
+                        <td>{{ $wali->dataAnaks->nama_anak }}</td>                        
+                        @else
+                        <td>-</td>
+                        @endif -->
+
+                        <td>{{ $wali->alamat }}</td>
+                        <td>{{ $wali->no_telp }}</td>                        
+
+                        <form action="{{ route('deleteWali', $wali->id) }}" method="post" >
+                        @csrf                        
                             <td>
-                                <button class="button-edit" data-bs-toggle="modal" data-bs-target="#"><i class="fas fa-pencil-alt"></i></button>
-                                <button class="button-delete"><i class="fas fa-times" data-bs-toggle="modal" data-bs-target="#"></i></button>
+                                <a class="btn btn-primary" href="{{ route('detailWali') }}">
+                                    <i class="fa-lg fa-sharp fa-solid fa-eye"></i>
+                                </a>
+                                <a class="btn btn-warning" href="{{ route('editWali', $wali->id) }}">
+                                    <i class="fa-lg fa-solid fa-pen-to-square"></i>
+                                </a>
+                                <button class="btn btn-danger" type="submit" onclick="return confirm('Yakin ingin menghapus?')">
+                                    <i class="fa-lg fa-solid fa-trash"></i>
+                                </button>
+                                <!-- @if(is_null($wali->dataAnaks))
+                                <button class="btn btn-danger" type="submit" onclick="return confirm('Yakin ingin menghapus?')">
+                                    <i class="fa-lg fa-solid fa-trash"></i>
+                                </button>
+                                @endif -->
                             </td>
-                        </tr>
+                        </form>
+                    </tr>
                     @endforeach
                 </tbody>
             </table>

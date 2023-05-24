@@ -16,21 +16,39 @@
                                       <div class="">
                                         <label for="Name" class="form-label">Nama</label>
                                         <input type="text" class="form-control" placeholder="Name" name="nama" id="nama" required>
-                                    </div>
+                                      </div>
 
-                                    <div class="col-md-6">
+                                      <div class="">
+                                        <label for="Cattegory" class="form-label">Jenis Kelamin</label>
+                                        <select name="jenis_kelamin" id="form-select" class="form-select">
+                                          <option >Pilih Jenis Kelamin</option>
+                                          <option value="L">Laki-laki</option>
+                                          <option value="P">Perempuan</option>
+                                        </select>
+                                      </div>
+
+                                      <div class="col-md-6">
                                         <label for="Name" class="form-label">Alamat</label>
                                         <input type="text" class="form-control" placeholder="Alamat" name="alamat" id="alamat" required>
-                                    </div>
+                                      </div>
 
-                                    <div class="col-md-6">
+                                      <div class="col-md-6">
+                                        <label for="Cattegory" class="form-label">Status</label>
+                                        <select name="status" id="form-select" class="form-select">
+                                          <option >Pilih Status</option>
+                                          <option value="aktif">Aktif</option>
+                                          <option value="berhenti menjabat">Berhenti Menjabat</option>
+                                        </select>
+                                      </div>
+                                      <div class="">
                                         <label for="Name" class="form-label">NO. Telp</label>
                                         <input type="number" class="form-control" placeholder="NoTelepon" name="NoTelepon" id="NoTelepon" required>
-                                    </div>
+                                      </div>
 
-                                    <div class=" d-grid gap-2">
+
+                                      <div class=" d-grid gap-2">
                                         <button type="submit" class="button-submit">Submit</button>
-                                    </div>
+                                      </div>
                                 </form>
                           </div>
                       </div>

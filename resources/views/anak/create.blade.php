@@ -34,6 +34,10 @@
                                           @endforeach
                                         </select>
                                     </div>
+                                    <div class="">
+                                        <label for="Name" class="form-label">Umur</label>
+                                        <input type="number" class="form-control" max="100" min="0" placeholder="umur" name="umur" id="umur" required>
+                                    </div>
 
                                     <div class=" d-grid gap-2">
                                         <button type="submit" class="button-submit">Submit</button>

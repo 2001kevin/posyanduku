@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="data_anak">
-    <div class="card d-flex align-item-center mt-5 " style="width:99%">
+    <div class="card d-flex align-item-center mt-5" style="width:99%">
         <div class="d-flex justify-content-between">
             <div class="title_data d-flex justify-content-between">
                 <img src="{{asset('assets/images/LOGO.svg')}}" alt="">
@@ -16,24 +16,55 @@
                     <tr>
                         <th>Nama Wali</th>
                         <th>Nama Anak</th>
-                        <th>Jenis Kelamin</th>
-                        <th >Action</th>
+                        <th>Gender Anak</th>
+                        <th>Umur</th>
+                        <th>Jml Pemeriksaan</th>
+                        <th>Jml Suplemen</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($anaks as $anak )
-                        <tr>
-                            {{-- @foreach ($anak->dataWalis as $item)
-                                <td>{{ $item->nama_wali }}</td>
-                            @endforeach --}}
+                    @foreach($anaks as $anak)
+                    <tr>
+                        @foreach($wali_deleted as $wali)
+                            @if($anak->id_wali == $wali->id)
+                            <td style="color:darkred">x {{ $wali->nama_wali }} x</td>
+                            @else
                             <td>{{ $anak->dataWalis->nama_wali }}</td>
-                            <td>{{ $anak->nama_anak }}</td>
-                            <td>{{ $anak->jenis_kelamin }}</td>
+                            @endif
+                        @endforeach
+                            
+                        <td>{{ $anak->nama_anak }}</td>
+                        <td class="text-center">{{ $anak->jenis_kelamin }}</td>
+                        <td class="text-center">{{ $anak->umur }} bln</td>
+
+                        @if($anak->dataFisiks)
+                        <td class="text-center">{{ $anak->dataFisiks->where('id_anak', $anak->id)->count() }}</td>
+                        @else
+                        <td class="text-center">0</td>
+                        @endif
+
+                        @if($anak->dataSuplements)
+                        <td class="text-center">{{ $anak->dataSuplements->where('id_anak', $anak->id)->count() }}</td>
+                        @else
+                        <td class="text-center">0</td>
+                        @endif
+
+                        <form action="{{ route('deleteAnak', $anak->id) }}" method="post" >
+                        @csrf                        
                             <td>
-                                <button class="button-edit" data-bs-toggle="modal" data-bs-target="#"><i class="fas fa-pencil-alt"></i></button>
-                                <button class="button-delete"><i class="fas fa-times" data-bs-toggle="modal" data-bs-target="#"></i></button>
+                                <a class="btn btn-primary" href="{{ route('detailAnak') }}">
+                                    <i class="fa-lg fa-sharp fa-solid fa-eye"></i>
+                                </a>
+                                <a class="btn btn-warning" href="{{ route('editAnak', $anak->id) }}">
+                                    <i class="fa-lg fa-solid fa-pen-to-square"></i>
+                                </a>
+                                <button class="btn btn-danger" type="submit" onclick="return confirm('Yakin ingin menghapus?')">
+                                    <i class="fa-lg fa-solid fa-trash"></i>
+                                </button>
                             </td>
-                        </tr>
+                        </form>
+                    </tr>
                     @endforeach
                 </tbody>
             </table>

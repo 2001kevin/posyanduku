@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="data_anak">
-    <div class="card d-flex align-item-center mt-5 " style="width:99%">
+    <div class="card d-flex align-item-center mt-5" style="width:100%">
         <div class="d-flex justify-content-between">
             <div class="title_data d-flex justify-content-between">
                 <img src="{{asset('assets/images/LOGO.svg')}}" alt="">
@@ -11,28 +11,43 @@
             <a href="{{ route('createKader') }}" class="button_create">Create</a>
         </div>
         <div class="card-body">
-            <table id="dataTable" class="table" style="width:100%">
+            <table id="dataTable" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Nama</th>
-                        <th>No Telepon</th>
+                        <th>Nama Kader</th>
+                        <th>Jenis Kelamin</th>
                         <th>Alamat</th>
-                        <th >Action</th>
+                        <th>No Telp</th>
+                        <th>Status</th>
+                        <!-- <th>Kehadiran Kader</th> -->
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($kaders as $kader)
-                        <tr>
-                            <th scope="row">{{ $loop->index+1 }}</th>
-                            <td>{{ $kader->nama_kader }}</td>
-                            <td>{{ $kader->no_telp }}</td>
-                            <td>{{ $kader->alamat }}</td>
+                    @foreach($kaders as $kader)
+                    <tr>
+                        <td>{{ $kader->nama_kader }}</td>
+                        <td>{{ $kader->jenis_kelamin }}</td>
+                        <td>{{ $kader->alamat }}</td>
+                        <td>{{ $kader->no_telp }}</td>                        
+                        <td>{{ $kader->status }}</td>                        
+                        <!-- <td>##</td> -->
+
+                        <form action="{{ route('deleteKader', $kader->id) }}" method="post" >
+                        @csrf                        
                             <td>
-                                <button class="button-edit" data-bs-toggle="modal" data-bs-target="#"><i class="fas fa-pencil-alt"></i></button>
-                                <button class="button-delete"><i class="fas fa-times" data-bs-toggle="modal" data-bs-target="#"></i></button>
+                                <a class="btn btn-primary" href="{{ route('detailKader') }}">
+                                    <i class="fa-lg fa-sharp fa-solid fa-eye"></i>
+                                </a>
+                                <a class="btn btn-warning" href="{{ route('editKader', $kader->id) }}">
+                                    <i class="fa-lg fa-solid fa-pen-to-square"></i>
+                                </a>
+                                <button class="btn btn-danger" type="submit" onclick="return confirm('Yakin ingin menghapus?')">
+                                    <i class="fa-lg fa-solid fa-trash"></i>
+                                </button>
                             </td>
-                        </tr>
+                        </form>
+                    </tr>
                     @endforeach
                 </tbody>
             </table>

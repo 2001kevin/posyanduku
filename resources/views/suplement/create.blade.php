@@ -8,10 +8,10 @@
                       <img class="header_logo" src="{{ asset('assets/images/LOGO_POSYANDU.svg') }}" style="border-top-left-radius: 13px; border-top-right-radius: 15px;" class="card-img-top d-none d-lg-block"  alt="Backgorund Image">
                           <div class="card-body py-5 px-5">
                               <div class="text-center">
-                                      <h1><strong>Buat Data Fisik</strong></h1>
+                                      <h1><strong>Buat Data Suplement</strong></h1>
                                   </div>
 
-                                  <form action="{{ route('storeFisik') }}" method="POST" class="row sign-up-form form g-3" enctype="multipart/form-data">
+                                  <form action="{{ route('storeSuplement') }}" method="POST" class="row sign-up-form form g-3" enctype="multipart/form-data">
                                     @csrf
                                     <div class="col d-grid gap-2">
                                        <label for="wali" class="form-label">Pilih Anak</label>
@@ -34,22 +34,40 @@
                                     </div>
 
                                     <div class="">
-                                       <label for="makanan_tambahan" class="form-label">Naik Turun Berat Badan</label>
-                                        <select name="naik_turun_bb" id="form-select" class="form-select">
-                                          <option >Status Berat Badan</option>
-                                            <option value="naik">naik</option>
-                                            <option value="turun">turun</option>
+                                       <label for="vitamin_a" class="form-label">Status Vitamin A</label>
+                                        <select name="vitamin_a" id="form-select" class="form-select">
+                                          <option >Status</option>
+                                            <option value="sudah">sudah</option>
+                                            <option value="belum">belum</option>
                                         </select>
                                     </div>
 
                                     <div class="">
-                                        <label for="Name" class="form-label">Berat Badan</label>
-                                        <input type="number" min="0" max="100" class="form-control" placeholder="Berat Badan" name="berat_badan" id="berat_badan" required>
+                                       <label for="makanan_tambahan" class="form-label">Status Makanan Tambahan</label>
+                                        <select name="makanan_tambahan" id="form-select" class="form-select">
+                                          <option >Status Makanan Tambahan</option>
+                                            <option value="sudah">sudah</option>
+                                            <option value="belum">belum</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="">
+                                       <label for="makanan_tambahan" class="form-label">Obat Cacing</label>
+                                        <select name="obat_cacing" id="form-select" class="form-select">
+                                          <option >Status Obat</option>
+                                            <option value="sudah">sudah</option>
+                                            <option value="belum">belum</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="">
+                                        <label for="Name" class="form-label">Bulan Suplement</label>
+                                        <input type="month" class="form-control" placeholder="Bulan Suplement" name="bulan_suplement" id="bulan_suplement" required>
                                     </div>
 
                                     <div class="">
                                         <label for="Name" class="form-label">Tanggal Pemeriksaan</label>
-                                        <input type="date" class="form-control" placeholder="Tanggal Pemeriksaan" name="tgl_pemeriksaan" id="tgl_pemeriksaan" required>
+                                        <input type="date" class="form-control" placeholder="Tangga Pemeriksaan" name="tanggal_pemeriksaan" id="tanggal_pemeriksaan" required>
                                     </div>
 
                                     <div class="">

@@ -7,22 +7,41 @@ use App\Models\dataFisik as ModelsDataFisik;
 use App\Models\dataKader;
 use Illuminate\Http\Request;
 
-class DataSuplemen extends Controller
+class DataFisik extends Controller
 {
     public function index(){
         $fisiks = ModelsDataFisik::all();
-
+        // return $fisiks;
         return view('fisik.index', compact('fisiks'));
     }
 
     public function create()
     {
-        return view('suplement.create');
+        $kaders = dataKader::all();
+        $anaks = dataAnak::all();
+        return view('fisik.create', compact('kaders', 'anaks'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        # code...
+        $request->validate([
+            'id_anak' => 'required',
+            'id_kader' => 'required',
+            'berat_badan' => 'required',
+            'naik_turun_bb' => 'required',
+            'tgl_pemeriksaan' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        ModelsDataFisik::create([
+            'id_anak' => $request->id_anak,
+            'id_kader' => $request->id_kader,
+            'berat_badan' => $request->berat_badan,
+            'naik_turun_bb' => $request->naik_turun_bb,
+            'tgl_pemeriksaan' => $request->tgl_pemeriksaan,
+            'keterangan' => $request->keterangan,
+        ]);
+        return redirect('dataFisik');
     }
 
     public function detail()
