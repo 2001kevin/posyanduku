@@ -10,6 +10,7 @@ class dataKader extends Model
     use HasFactory;
 
     protected $table='kaders';
+    protected $guarded=['id'];
 
     public function dataFisiks(){
         return $this->hasMany(dataFisik::class);

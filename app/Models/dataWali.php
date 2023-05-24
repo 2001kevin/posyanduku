@@ -10,6 +10,7 @@ class dataWali extends Model
     use HasFactory;
 
     protected $table='walis';
+    protected $guarded=['id'];
 
     public function dataAnaks(){
         return $this->hasMany(dataAnak::class);

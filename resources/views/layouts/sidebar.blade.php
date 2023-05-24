@@ -60,15 +60,19 @@
       <div class="pt-2 d-flex flex-column gap-5">
         <div class="menu p-0">
             <p>Data Posyandu</p>
-          <a href="#" class="item-menu active">
+          <a href="#" class="item-menu {{ Request::is('/') ? 'active' : '' }}">
             <i class="icon ic-stats"></i>
-            Kader
+            Overview
           </a>
-          <a href="{{ route('dataAnak') }}" class="item-menu">
+          <a href="{{ route('dataKader') }}" class="item-menu {{ Request::is('dataKader') ? 'active' : '' }}">
+            <i class="icon ic-account"></i>
+              Data Kader
+          </a>
+          <a href="{{ route('dataAnak') }}" class="item-menu {{ Request::is('dataAnak') ? 'active' : '' }}">
             <i class="icon ic-account"></i>
               Data Anak
           </a>
-          <a href="#" class="item-menu">
+          <a href="{{ route('dataWali') }}" class="item-menu {{ Request::is('dataWali', 'createWali') ? 'active' : '' }}" >
             <i class="icon ic-account"></i>
               Data Wali
           </a>
@@ -120,8 +124,9 @@
                 this.closest('form').submit();"
             />
           </form>
-          <div style="width: 62px;">{{ Auth::user()->name }}</div>
-
+          @auth()
+            <div style="width: 62px;">{{ Auth::user()->name }}</div>
+          @endauth
         </div>
       </div>
     </nav>

@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="data_anak">
-    <div class="card d-flex align-item-center mt-5" style="width:99%">
+    <div class="card d-flex align-item-center mt-5 " style="width:99%">
         <div class="d-flex justify-content-between">
             <div class="title_data d-flex justify-content-between">
                 <img src="{{asset('assets/images/LOGO.svg')}}" alt="">
@@ -14,28 +14,27 @@
             <table id="dataTable" class="table" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>Nama Wali</th>
+                        <th>Nama Anak</th>
+                        <th>Jenis Kelamin</th>
                         <th >Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011-04-25</td>
-                        <td>$320,800</td>
-                        <td>
-                    <button class="button-edit" data-bs-toggle="modal" data-bs-target="#"><i class="fas fa-pencil-alt"></i></button>
-                    <button class="button-delete"><i class="fas fa-times" data-bs-toggle="modal" data-bs-target="#"></i></button>
-                  </td>
-                    </tr>
+                    @foreach($anaks as $anak )
+                        <tr>
+                            {{-- @foreach ($anak->dataWalis as $item)
+                                <td>{{ $item->nama_wali }}</td>
+                            @endforeach --}}
+                            <td>{{ $anak->dataWalis->nama_wali }}</td>
+                            <td>{{ $anak->nama_anak }}</td>
+                            <td>{{ $anak->jenis_kelamin }}</td>
+                            <td>
+                                <button class="button-edit" data-bs-toggle="modal" data-bs-target="#"><i class="fas fa-pencil-alt"></i></button>
+                                <button class="button-delete"><i class="fas fa-times" data-bs-toggle="modal" data-bs-target="#"></i></button>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

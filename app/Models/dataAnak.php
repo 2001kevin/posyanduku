@@ -10,6 +10,7 @@ class dataAnak extends Model
     use HasFactory;
 
     protected $table='anaks';
+    protected $guarded=['id'];
 
     public function dataFisiks(){
         return $this->hasMany(dataFisik::class);
@@ -20,6 +21,6 @@ class dataAnak extends Model
     }
 
     public function dataWalis(){
-        return $this->belongsTo(dataWali::class);
+        return $this->belongsTo(dataWali::class, 'id_wali');
     }
 }

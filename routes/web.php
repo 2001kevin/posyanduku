@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataAnakController;
+use App\Http\Controllers\DataKaderController;
+use App\Http\Controllers\DataWaliController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +26,14 @@ Route::get('/', function () {
 
 require __DIR__.'/auth.php';
 
+Route::get('dataKader', [DataKaderController::class, 'index'])->name('dataKader');
+Route::get('createKader', [DataKaderController::class, 'create'])->name('createKader');
+Route::post('storeKader', [DataKaderController::class, 'store'])->name('storeKader');
+
 Route::get('dataAnak', [DataAnakController::class, 'index'])->name('dataAnak');
 Route::get('createAnak', [DataAnakController::class, 'create'])->name('createAnak');
+Route::post('storeAnak', [DataAnakController::class, 'store'])->name('storeAnak');
+
+Route::get('dataWali', [DataWaliController::class, 'index'])->name('dataWali');
+Route::get('createWali', [DataWaliController::class, 'create'])->name('createWali');
+Route::post('storeWali',[DataWaliController::class, 'store'])->name('storeWali');
