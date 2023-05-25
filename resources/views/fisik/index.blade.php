@@ -31,20 +31,21 @@
                         <td>{{ $fisik->naik_turun_bb }}</td>
                         <td>{{ $fisik->tgl_pemeriksaan }}</td>
 
+                        <td class="button_group">
+                            <button class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#detailFisik-{{ $fisik->id }}">
+                            <i class="fa-lg fa-sharp fa-solid fa-eye"></i>
+                        </button>
+                        <a class="btn btn-warning" href="{{ route('editFisik', $fisik->id) }}">
+                            <i class="fa-lg fa-solid fa-pen-to-square"></i>
+                        </a>
                         <form action="{{ route('deleteFisik', $fisik->id) }}" method="post" >
-                        @csrf                        
-                            <td>
-                                <a class="btn btn-primary" href="{{ route('detailFisik') }}">
-                                    <i class="fa-lg fa-sharp fa-solid fa-eye"></i>
-                                </a>
-                                <a class="btn btn-warning" href="{{ route('editFisik', $fisik->id) }}">
-                                    <i class="fa-lg fa-solid fa-pen-to-square"></i>
-                                </a>
+                        @csrf
                                 <button class="btn btn-danger" type="submit" onclick="return confirm('Yakin ingin menghapus?')">
                                     <i class="fa-lg fa-solid fa-trash"></i>
                                 </button>
+                            </form>
                             </td>
-                        </form>
                     </tr>
                     @endforeach
                 </tbody>
@@ -52,4 +53,72 @@
         </div>
     </div>
 </section>
+@foreach ($fisiks as $fisik)
+        <div class="modal fade " id="detailFisik-{{ $fisik->id }}" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-body">
+                    <section class="form_anak">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-md-10">
+                                    <div class="card mb-4 mx-4 mt-4  ">
+                                        <img class="header_logo" src="{{ asset('assets/images/LOGO_POSYANDU.svg') }}"
+                                            style="border-top-left-radius: 13px; border-top-right-radius: 15px;"
+                                            class="card-img-top d-none d-lg-block" alt="Backgorund Image">
+                                        <div class="card-body py-5 px-5">
+                                            <div class="text-center">
+                                                <h1><strong>Detail Data Fisik</strong></h1>
+                                            </div>
+
+                                                <div class="">
+                                                    <label for="Name" class="form-label">Nama Anak</label>
+                                                    <input type="text" value="{{ $fisik->dataAnaks->nama_anak }}"
+                                                        class="form-control" placeholder="Name" name="nama"
+                                                        id="nama" required readonly>
+                                                </div>
+
+                                            <div class="mt-3">
+                                                <label for="Name" class="form-label">Nama Kader</label>
+                                                <input type="text" value="{{ $fisik->dataKaders->nama_kader }}" class="form-control"
+                                                    placeholder="Alamat" name="alamat" id="alamat" required readonly>
+                                            </div>
+
+                                            <div class="mt-3">
+                                                <label for="Name" class="form-label">Berat Badan</label>
+                                                <input type="text" value="{{ $fisik->berat_badan }}"
+                                                    class="form-control" placeholder="NoTelepon" name="NoTelepon"
+                                                    id="NoTelepon" required readonly>
+                                            </div>
+
+                                            <div class="mt-3">
+                                                <label for="Name" class="form-label">Naik Turun Berat Badan</label>
+                                                <input type="text" value="{{ $fisik->naik_turun_bb }}" class="form-control"
+                                                    placeholder="NoTelepon" name="NoTelepon" id="NoTelepon" required
+                                                    readonly>
+                                            </div>
+
+                                            <div class="mt-3">
+                                                <label for="Name" class="form-label">Tanggal Pemeriksaan</label>
+                                                <input type="text" value="{{ $fisik->tgl_pemeriksaan }}" class="form-control"
+                                                    placeholder="NoTelepon" name="NoTelepon" id="NoTelepon" required
+                                                    readonly>
+                                            </div>
+
+                                            <div class="mt-3">
+                                                <label for="Name" class="form-label">Keterangan</label>
+                                                <input type="text" value="{{ $fisik->keterangan }}" class="form-control"
+                                                    placeholder="NoTelepon" name="NoTelepon" id="NoTelepon" required
+                                                    readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    @endforeach
 @endsection

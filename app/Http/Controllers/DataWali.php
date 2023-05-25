@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\dataWali as ModelsDataWali;
+use App\Models\dataAnak;
+use App\Models\dataSuplement;
+use App\Models\dataFisik;
 use Illuminate\Http\Request;
 
 class DataWali extends Controller
@@ -66,6 +69,17 @@ class DataWali extends Controller
 
     public function delete($id)
     {
+        $anak = dataAnak::where('id_wali', $id);
+
+        foreach ($anak->get() as $item) {
+            $data_supplement = dataSuplement::where('id_anak', $item->id);
+            $data_supplement->delete();
+
+            $data_fisik = dataFisik::where('id_anak', $item->id);
+            $data_fisik->delete();
+        }
+        $anak->delete();
+    
         $walis = ModelsDataWali::find($id);
         $walis->delete();
 

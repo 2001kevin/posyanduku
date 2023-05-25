@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\dataFisik;
+use App\Models\dataSuplement;
 use App\Models\dataKader as ModelsDataKader;
 use Illuminate\Http\Request;
 
@@ -76,6 +77,12 @@ class DataKader extends Controller
 
      public function delete($id)
     {
+        $data_supplement = dataSuplement::where('id_kader', $id);
+        $data_supplement->delete();
+
+        $data_fisik = dataFisik::where('id_kader', $id);
+        $data_fisik->delete();
+
         $kaders = ModelsDataKader::find($id);
         $kaders->status = 'berhenti menjabat';
         $kaders->save();

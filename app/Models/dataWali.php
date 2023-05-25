@@ -15,6 +15,6 @@ class dataWali extends Model
     protected $guarded=['id'];
 
     public function dataAnaks(){
-        return $this->belongsTo(dataAnak::class, 'id', 'id_wali');
+        return $this->hasMany(dataAnak::class, 'id_wali', 'id');
     }
 }

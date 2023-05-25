@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.3.2/css/fixedHeader.bootstrap5.min.css">
-  
+
   <!-- CDN Fontawesome -->
   <script src="https://kit.fontawesome.com/32f82e1dca.js" crossorigin="anonymous"></script>
   <!-- CDN SweetAlert -->
@@ -72,7 +72,7 @@
       </div>
       <div class="menu">
         <p>Others</p>
-        
+
         <form method="POST" action="{{ route('logout') }}">
           <a :href="route('logout')" onclick="event.preventDefault();
                 this.closest('form').submit();" class="item-menu">
@@ -141,7 +141,9 @@
 
   <script>
     $(document).ready(function() {
-      $('#dataTable').DataTable();
+      $('#dataTable').DataTable({
+          scrollX: true,
+      });
     });
   </script>
   <script>

@@ -93,6 +93,12 @@ class DataSuplement extends Controller
 
      public function delete($id)
     {
+        $data_anak = dataAnak::where('id_anak', $id);
+        $data_anak->delete();
+
+        $data_kader = dataKader::where('id_kader', $id);
+        $data_kader->delete();
+        
         $suplements = ModelsDataSuplement::find($id);
         $suplements->delete();
 

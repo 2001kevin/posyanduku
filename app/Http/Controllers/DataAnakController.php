@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\dataAnak;
 use App\Models\dataSuplement;
 use App\Models\dataWali;
+use App\Models\dataFisik;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -14,6 +15,8 @@ class DataAnakController extends Controller
     public function index(){
         $anaks = dataAnak::all();
         $wali_deleted =  dataWali::withTrashed()->whereNotNull('deleted_at')->get();
+        // return $wali_deleted;
+        // dd($anaks);
         return view('anak.index', compact('anaks', 'wali_deleted'));
     }
 
@@ -80,6 +83,12 @@ class DataAnakController extends Controller
 
     public function delete($id)
     {
+        $data_supplement = dataSuplement::where('id_anak', $id);
+        $data_supplement->delete();
+
+        $data_fisik = dataFisik::where('id_anak', $id);
+        $data_fisik->delete();
+        
         $anaks = dataAnak::find($id);
         $anaks->delete();
 
