@@ -22,7 +22,6 @@ class DataAnakController extends Controller
 
     public function create()
     {
-
         $walis = dataWali::all();
         return view('anak.create', compact('walis'));
     }

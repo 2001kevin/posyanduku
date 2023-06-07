@@ -42,7 +42,7 @@ class DataSuplement extends Controller
             'vitamin_a' => $request->vitamin_a,
             'makanan_tambahan' => $request->makanan_tambahan,
             'obat_cacing' => $request->obat_cacing,
-            'bulan_suplemen' => $request->bulan_suplement,
+            'bulan_suplement' => $request->bulan_suplement,
             'tgl_pemeriksaan' => $request->tanggal_pemeriksaan,
             'keterangan' => $request->keterangan,
         ]);
@@ -71,7 +71,7 @@ class DataSuplement extends Controller
             'vitamin_a' => 'required|in:sudah,belum',
             'obat_cacing' => 'required|in:sudah,belum',
             'makanan_tambahan' => 'required|in:sudah,belum',
-            'bulan_suplemen' => 'required|in:februari,agustus',
+            'bulan_suplement' => 'required|in:februari,agustus',
             'tgl_pemeriksaan' => 'required|date',            
             'keterangan' => 'required|string|max:255',      
         ]);
@@ -82,7 +82,7 @@ class DataSuplement extends Controller
         $data_suplement->vitamin_a = $request->vitamin_a;
         $data_suplement->obat_cacing = $request->obat_cacing;
         $data_suplement->makanan_tambahan = $request->makanan_tambahan;
-        $data_suplement->bulan_suplemen = $request->bulan_suplemen;
+        $data_suplement->bulan_suplement = $request->bulan_suplement;
         $data_suplement->tgl_pemeriksaan = $request->tgl_pemeriksaan;
         $data_suplement->keterangan = $request->keterangan;
         $data_suplement->save();

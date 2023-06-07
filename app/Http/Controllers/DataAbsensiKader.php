@@ -4,25 +4,59 @@ namespace App\Http\Controllers;
 
 use App\Models\dataKader;
 use Illuminate\Http\Request;
-use App\Models\dataWali as ModelsDataWali;
 use App\Models\dataAbsensiKader as ModelsDataAbsensiKader;
+use Illuminate\Support\Facades\DB;
 
 class DataAbsensiKader extends Controller
 {
-    public function index(){
-        $walis = ModelsDataWali::all();
+    public function index()
+    {
+        $bulan_absensi = DB::table('absensi_kaders')
+            ->whereNull('deleted_at')
+            ->orderBy('bulan_absensi', 'desc')
+            ->distinct()
+            ->pluck('bulan_absensi');
+        // dd($bulan_absensi);
 
-        return view('wali.index', compact('walis'));
+        $absensi_kaders = ModelsDataAbsensiKader::where('bulan_absensi', $bulan_absensi)->get();
+
+        return view('absensi.index', compact('absensi_kaders', 'bulan_absensi'));
+    }
+
+    public function data_absensi($bulan_absensi)
+    {
+        $data_absensi = ModelsDataAbsensiKader::where('bulan_absensi', $bulan_absensi)
+            ->with('dataKaders')
+            ->get();
+        // dd($variabel) -> ini gaboleh ya ges yak, nggak bisa dipake nge dd kalo ginian, 
+        //                  ntar 505 soalnya return json nya nggak ke kirim
+        return response()->json($data_absensi);
     }
 
     public function create()
     {
-        return view('dashboard');
+        $kaders = dataKader::where('status', '!=', 'berhenti menjabat')->get();
+
+        return view('absensi.create', compact('kaders'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        # code...
+        $id_kader = $request->input('id_kader');
+        $status = $request->input('status');
+        $keterangan = $request->input('keterangan');
+        // dd($id_kader, $status, $keterangan);
+
+        foreach ($id_kader as $index => $id) {
+            ModelsDataAbsensiKader::create([
+                'id_kader' => $id,
+                'status_hadir' => $status[$index],
+                'bulan_absensi' => $request->bulan_absensi,
+                'keterangan' => $keterangan[$index],
+            ]);
+        }
+
+        return redirect()->route('dataAbsensiKader')->with('toast_success', 'Data berhasil disimpan!');
     }
 
     public function detail()
@@ -30,38 +64,43 @@ class DataAbsensiKader extends Controller
         return view('dashboard');
     }
 
-    public function edit($id)
+    public function edit($bulan_absensi)
     {
-        $absensi_kaders = dataKader::find($id);
+        $absensi_kaders = ModelsDataAbsensiKader::where('bulan_absensi', $bulan_absensi)->get();
+        // dd($kaders);
 
-        return view('absensi_kader.edit', compact('absensi_kaders'));
+        return view('absensi.edit', compact('absensi_kaders', 'bulan_absensi'));
     }
 
-    public function update(Request $request, $id)
-    {   
-        $update_absensi_kader = $request->validate([
-            'nama_absensi_kader' => 'required|string|max:100',
-            'jenis_kelamin' => 'required|in:L,P',
-            'umur' => 'required|numeric|between:0,120',            
-        ]);
-        
-        $data_absensi_kader = ModelsDataAbsensiKader::find($id);
-        $data_absensi_kader->nama_absensi_kader = $request->nama_absensi_kader;
-        $data_absensi_kader->jenis_kelamin = $request->jenis_kelamin;
-        $data_absensi_kader->umur = $request->umur;
-        $data_absensi_kader->save();
+    public function update(Request $request, $bulan_absensi)
+    {
+        $id_kader = $request->input('id_kader');
+        $status = $request->input('status');
+        $keterangan = $request->input('keterangan');
+        // dd($id_kader, $status, $keterangan);
+        // dd($bulan_absensi);
 
-        return redirect()->route('dataAbsensiKader')->with('toast_success' ,'Data berhasil diperbarui!');
-        
+        foreach ($id_kader as $index => $id) {
+            // $coba = ModelsDataAbsensiKader::where('bulan_absensi', $bulan_absensi)->where('id', $id)->get();
+            // dd($id, $bulan_absensi, $coba);
+
+            ModelsDataAbsensiKader::where('bulan_absensi', $bulan_absensi)->where('id', $id)->update([
+                'status_hadir' => $status[$index],
+                'keterangan' => $keterangan[$index],
+            ]);
+        }
+
+        return redirect()->route('dataAbsensiKader')->with('toast_success', 'Data berhasil diperbarui!');
     }
 
-     public function delete($id)
+    public function delete($bulan_absensi)
     {
-        $absensi_kaders = ModelsDataAbsensiKader::find($id);
+        // dd($bulan_absensi);
+        $absensi_kaders = ModelsDataAbsensiKader::where('bulan_absensi', $bulan_absensi);
         $absensi_kaders->delete();
 
         // Alert::success('Delete!', "Data berhasil dihapus!");
-        return redirect()->route('dataAbsensiKader')->with('toast_success' ,'Data berhasil dihapus!');
+        return redirect()->route('dataAbsensiKader')->with('toast_success', 'Data berhasil dihapus!');
         // return redirect()->route('dataAnak')->withSuccessMessage('Data berhasil dihapus!');
     }
 }
