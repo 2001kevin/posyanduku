@@ -42,6 +42,24 @@ body {
   color: #ffffff;
 }
 
+.button_delete {
+  padding: 10px 20px 10px 20px;
+  margin: 30px 20px 30px 0;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #a72020;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button_delete:hover {
+  background-color: #cf0023;
+  color: #ffffff;
+}
+
 /* .button_create{
     border-radius: 10px;
     margin: 30px 20px 20px 0;

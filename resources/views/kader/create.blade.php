@@ -37,6 +37,7 @@
                                         <select name="status" id="form-select" class="form-select">
                                           <option >Pilih Status</option>
                                           <option value="aktif">Aktif</option>
+                                          <option value="tidak aktif">Tidak Aktif</option>
                                           <option value="berhenti menjabat">Berhenti Menjabat</option>
                                         </select>
                                       </div>

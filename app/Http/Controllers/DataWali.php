@@ -45,8 +45,10 @@ class DataWali extends Controller
     public function edit($id)
     {
         $walis = ModelsDataWali::find($id);
+        $dataAnaks = $walis->dataAnaks;
+        // dd($dataAnaks);
 
-        return view('wali.edit', compact('walis'));
+        return view('wali.edit', compact('walis', 'dataAnaks'));
     }
 
     public function update(Request $request, $id)

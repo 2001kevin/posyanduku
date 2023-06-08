@@ -45,7 +45,7 @@
     <div class="pt-2 d-flex flex-column gap-5">
       <div class="menu p-0">
         <p>Data Posyandu</p>
-        <a href="{{ route('dataAbsensiKader') }}" class="item-menu">
+        <a href="{{ route('dataAbsensiKader') }}" class="item-menu {{ Request::is('dataAbsensiKader', 'createAbsensiKader') ? 'active' : '' }}">
           <i class="icon ic-stats"></i>
           Absensi Kader
         </a>

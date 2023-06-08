@@ -54,10 +54,10 @@
               </div>
 
               <div class="col-md-6">
-                <label for="bulan_suplemen" class="form-label">Bulan Suplemen</label>
-                <select name="bulan_suplemen" id="form-select" class="form-select">
-                    <option value="{{ $suplements->bulan_suplemen }}">{{ $suplements->bulan_suplemen }}</option>
-                    <option value="{{ $suplements->bulan_suplemen === 'februari' ? 'agustus' : 'februari' }}">{{ $suplements->bulan_suplemen === 'februari' ? 'agustus' : 'februari' }}</option>
+                <label for="bulan_suplement" class="form-label">Bulan Suplemen</label>
+                <select name="bulan_suplement" id="form-select" class="form-select">
+                    <option value="{{ $suplements->bulan_suplement }}">{{ $suplements->bulan_suplement }}</option>
+                    <option value="{{ $suplements->bulan_suplement === 'februari' ? 'agustus' : 'februari' }}">{{ $suplements->bulan_suplement === 'februari' ? 'agustus' : 'februari' }}</option>
                 </select>
               </div>
 

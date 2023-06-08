@@ -65,13 +65,15 @@ Route::controller(DataWali::class)->group(function () {
 
 Route::controller(DataAbsensiKader::class)->group(function () {
     Route::get('dataAbsensiKader', 'index')->name('dataAbsensiKader');
+    Route::get('absensi_kader/{bulan_absensi}', 'data_absensi')->name('data_absensi');
+
     Route::get('createAbsensiKader', 'create')->name('createAbsensiKader');
     Route::post('storeAbsensiKader', 'store')->name('storeAbsensiKader');
     Route::get('detailAbsensiKader', 'detail')->name('detailAbsensiKader');
 
-    Route::get('editAbsensiKader/{id}', 'edit')->name('editAbsensiKader');
-    Route::post('updateAbsensiKader/{id}', 'update')->name('updateAbsensiKader');
-    Route::post('deleteAbsensiKader/{id}', 'delete')->name('deleteAbsensiKader');
+    Route::get('editAbsensiKader/{bulan_absensi}', 'edit')->name('editAbsensiKader');
+    Route::post('updateAbsensiKader/{bulan_absensi}', 'update')->name('updateAbsensiKader');
+    Route::post('deleteAbsensiKader/{bulan_absensi}', 'delete')->name('deleteAbsensiKader');
 });
 
 Route::controller(DataSuplement::class)->group(function () {

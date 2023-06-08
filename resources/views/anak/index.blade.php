@@ -26,7 +26,13 @@
                     <tbody>
                         @foreach ($anaks as $anak)
                             <tr>
-                                <td>{{ $anak->dataWalis->nama_wali }}</td>
+                                @foreach($wali_deleted as $wali)
+                                    @if($anak->id_wali == $wali->id)
+                                    <td style="color:darkred">x {{ $wali->nama_wali }} x</td>
+                                    @else
+                                    <td>{{ $anak->dataWalis->nama_wali }}</td>
+                                    @endif
+                                @endforeach
                                 <td>{{ $anak->nama_anak }}</td>
                                 <td class="text-center">{{ $anak->jenis_kelamin }}</td>
                                 <td class="text-center">{{ $anak->umur }} bln</td>
@@ -92,6 +98,12 @@
                                                     <input type="text" value="{{ $anak->dataWalis->nama_wali }}"
                                                         class="form-control" placeholder="Name" name="nama"
                                                         id="nama" required readonly>
+                                                </div>
+                                            @else
+                                                <label for="Name" class="form-label">Nama Wali</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" style="color:darkred" value="X" disabled>
+                                                    <span class="input-group-text" id="basic-addon2" style="color:darkred">wali sudah tidak tercatat</span>
                                                 </div>
                                             @endif
 

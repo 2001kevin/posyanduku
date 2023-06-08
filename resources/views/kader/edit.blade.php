@@ -30,8 +30,19 @@
               <div class="col-md-6">
                 <label for="Status" class="form-label">Status</label>
                 <select name="status" id="form-select" class="form-select">
-                    <option value="{{ $kaders->status }}">{{ $kaders->status }}</option>
-                    <option value="{{ $kaders->status === 'aktif' ? 'tidak aktif' : 'aktif' }}">{{ $kaders->status === 'aktif' ? 'tidak aktif' : 'aktif' }}</option>
+                  @if($kaders->status == 'aktif')
+                  <option value="{{ $kaders->status }}">{{ $kaders->status }}</option>
+                  <option value="tidak aktif">tidak aktif</option>
+                  <option value="berhenti menjabat">berhenti menjabat</option>
+                  @elseif($kaders->status == 'tidak aktif')
+                  <option value="{{ $kaders->status }}">{{ $kaders->status }}</option>
+                  <option value="aktif">aktif</option>
+                  <option value="berhenti menjabat">berhenti menjabat</option>
+                  @else
+                  <option value="{{ $kaders->status }}">{{ $kaders->status }}</option>
+                  <option value="aktif">aktif</option>
+                  <option value="tidak aktif">tidak aktif</option>
+                  @endif
                 </select>
               </div>
               <div class="col-md-12">

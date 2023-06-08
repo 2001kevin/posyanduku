@@ -12,7 +12,7 @@ class dataSuplement extends Model
     use SoftDeletes;
 
     protected $table='data_suplements';
-    protected $fillable= ['id_anak', 'id_kader', 'vitamin_a', 'obat_cacing', 'makanan_tambahan', 'bulan_suplemen', 'tgl_pemeriksaan', 'keterangan'];
+    protected $fillable= ['id_anak', 'id_kader', 'vitamin_a', 'obat_cacing', 'makanan_tambahan', 'bulan_suplement', 'tgl_pemeriksaan', 'keterangan'];
 
     public function dataAnaks(){
         return $this->belongsTo(dataAnak::class, 'id_anak', 'id');

@@ -19,7 +19,7 @@
                         <th>Vitamin A</th>
                         <th>Obat Cacing</th>
                         <th>Makanan Tambahan</th>
-                        <th>Bulan Suplemen</th>
+                        <th>Bulan Suplement</th>
                         <th>Tanggal Pemeriksaan</th>
                         <th>Action</th>
                     </tr>
@@ -32,7 +32,7 @@
                         <td>{{ $suplement->vitamin_a }}</td>
                         <td>{{ $suplement->obat_cacing }}</td>
                         <td>{{ $suplement->makanan_tambahan }}</td>
-                        <td>{{ $suplement->bulan_suplemen }}</td>
+                        <td>{{ $suplement->bulan_suplement }}</td>
                         <td>{{ $suplement->tgl_pemeriksaan }}</td>
 
                         <td class="button_group">

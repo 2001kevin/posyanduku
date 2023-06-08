@@ -25,10 +25,12 @@
                 <input type="text" class="form-control" placeholder="Alamat" name="alamat" id="alamat" value="{{ $walis->alamat }}" required>
               </div>
               
-              @if($walis->dataAnaks)
+              @if(count($dataAnaks) > 0)
               <div class="d-grid gap-2">
                 <label for="Anak" class="form-label">Anak</label>
-                <input type="text" class="form-control" placeholder="Anak" name="nama_anak" id="nama_anak" value="{{ $walis->dataAnaks->nama_anak }}" disabled>
+                @foreach($dataAnaks as $dataAnak)
+                <input type="text" class="form-control" placeholder="Anak" name="nama_anak" id="nama_anak" value="{{ $dataAnak->nama_anak }}" disabled>
+                @endforeach
               </div>
               @else
               <div class="col-md-10">
