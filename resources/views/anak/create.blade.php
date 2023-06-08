@@ -21,8 +21,8 @@
                                         <label for="Cattegory" class="form-label">Jenis Kelamin</label>
                                         <select name="jenis_kelamin" id="form-select" class="form-select">
                                           <option >Pilih Jenis Kelamin</option>
-                                          <option value="Laki-laki">Laki-laki</option>
-                                          <option value="Perempuan">Perempuan</option>
+                                          <option value="L">Laki-laki</option>
+                                          <option value="P">Perempuan</option>
                                         </select>
                                     </div>
                                     <div class="col d-grid gap-2">

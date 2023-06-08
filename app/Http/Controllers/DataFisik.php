@@ -17,7 +17,7 @@ class DataFisik extends Controller
 
     public function create()
     {
-        $kaders = dataKader::all();
+        $kaders = dataKader::where('status', 'aktif' )->get();
         $anaks = dataAnak::all();
         return view('fisik.create', compact('kaders', 'anaks'));
     }
@@ -59,16 +59,16 @@ class DataFisik extends Controller
     }
 
     public function update(Request $request, $id)
-    {   
+    {
         $request->validate([
             'id_anak' => 'required|int',
             'id_kader' => 'required|int',
             'berat_badan' => 'required|numeric|between:0,99.99',
             'naik_turun_bb' => 'required|in:naik,turun',
-            'tgl_pemeriksaan' => 'required|date',            
-            'keterangan' => 'required|string|max:255',      
+            'tgl_pemeriksaan' => 'required|date',
+            'keterangan' => 'required|string|max:255',
         ]);
-        
+
         $data_fisik = ModelsDataFisik::find($id);
         $data_fisik->id_anak = $request->id_anak;
         $data_fisik->id_kader = $request->id_kader;
@@ -79,7 +79,7 @@ class DataFisik extends Controller
         $data_fisik->save();
 
         return redirect()->route('dataFisik')->with('toast_success' ,'Data berhasil diperbarui!');
-        
+
     }
 
      public function delete($id)

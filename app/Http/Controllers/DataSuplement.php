@@ -58,13 +58,13 @@ class DataSuplement extends Controller
     {
         $suplements = ModelsDataSuplement::find($id);
         $anaks = dataAnak::all();
-        $kaders = dataKader::all();
+        $kaders = dataKader::where('status', 'aktif' )->get();
 
         return view('suplement.edit', compact('suplements', 'anaks', 'kaders'));
     }
 
     public function update(Request $request, $id)
-    {   
+    {
         $request->validate([
             'id_anak' => 'required|int',
             'id_kader' => 'required|int',
@@ -72,10 +72,10 @@ class DataSuplement extends Controller
             'obat_cacing' => 'required|in:sudah,belum',
             'makanan_tambahan' => 'required|in:sudah,belum',
             'bulan_suplemen' => 'required|in:februari,agustus',
-            'tgl_pemeriksaan' => 'required|date',            
-            'keterangan' => 'required|string|max:255',      
+            'tgl_pemeriksaan' => 'required|date',
+            'keterangan' => 'required|string|max:255',
         ]);
-        
+
         $data_suplement = ModelsDataSuplement::find($id);
         $data_suplement->id_anak = $request->id_anak;
         $data_suplement->id_kader = $request->id_kader;
@@ -88,7 +88,7 @@ class DataSuplement extends Controller
         $data_suplement->save();
 
         return redirect()->route('dataSuplement')->with('toast_success' ,'Data berhasil diperbarui!');
-        
+
     }
 
      public function delete($id)
@@ -98,7 +98,7 @@ class DataSuplement extends Controller
 
         $data_kader = dataKader::where('id_kader', $id);
         $data_kader->delete();
-        
+
         $suplements = ModelsDataSuplement::find($id);
         $suplements->delete();
 
