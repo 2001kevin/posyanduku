@@ -16,11 +16,11 @@ class dataAnak extends Model
     protected $guarded=['id'];
 
     public function dataFisiks(){
-        return $this->hasMany(dataFisik::class, 'id', 'id_anak');
+        return $this->hasMany(dataFisik::class, 'id_anak', 'id');
     }
 
     public function dataSuplements(){
-        return $this->belongsTo(dataSuplement::class, 'id', 'id_anak');
+        return $this->hasMany(dataSuplement::class, 'id_anak', 'id');
     }
 
     public function dataWalis(){

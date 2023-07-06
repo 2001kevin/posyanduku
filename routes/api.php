@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AnakController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/anak', [AnakController::class, 'index']);
+Route::get('/anak/data-fisik', [AnakController::class, 'dataFisik']);
+Route::get('/anak/data-suplemen', [AnakController::class, 'dataSuplemen']);
